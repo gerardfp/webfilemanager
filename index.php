@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>File Manager</title>
+
 <style>
 html {
 	font-family: sans;
@@ -75,7 +79,6 @@ input[type=file] {
 </form>
 <button onclick="document.getElementById('file').click();">Upload file</button>
 
-
 <?php
 if(isset($_FILES['userfile'])){
 	move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/' . $_FILES['userfile']['name']);
@@ -86,25 +89,24 @@ if(isset($_GET['delete'])){
 }
 ?>
 
-
 <div class="file-grid">
 <?php
 if ($handle = opendir('uploads/')) {
 	while (($file = readdir($handle))) {
-        	if ($file != "." && $file != "..") {
-           		echo "
-				<div class='file'>
-					<a href='uploads/$file'>
-						<img src='uploads/$file'>
-						<p>$file</p>
-					</a>
-					<a class='trash' href='?delete=$file'></a>
+		if ($file != "." && $file != "..") {
+			echo "
+			<div class='file'>
+				<a href='uploads/$file'>
+					<img src='uploads/$file'>
+					<p>$file</p>
+				</a>
+				<a class='trash' href='?delete=$file'></a>
 
-				</div>
-			";
-        	}
-    	}
-    	closedir($handle);
+			</div>
+		";
+		}
+	}
+	closedir($handle);
 }
 ?>
 </div>
