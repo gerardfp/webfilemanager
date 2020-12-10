@@ -47,7 +47,7 @@ img {
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-button {
+label {
 	background-color: #55acee;
 	color: white;
 	border: 0px;
@@ -74,10 +74,10 @@ input[type=file] {
 </style>
 
 <h1>&#128194; File manager</h1>
-<form id="upload-form" enctype="multipart/form-data" action="?" method="POST">
+<form id="upload-form" enctype="multipart/form-data" method="POST">
     <input id="file" name="userfile" type="file" onchange="document.getElementById('upload-form').submit()"/>
+    <label for="file">Upload file...</label>
 </form>
-<button onclick="document.getElementById('file').click();">Upload file</button>
 
 <?php
 if(isset($_FILES['userfile'])){
